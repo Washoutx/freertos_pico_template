@@ -10,9 +10,9 @@ include(pico_sdk_import.cmake)
 if (PICO_SDK_VERSION_STRING VERSION_LESS "2.2.0")
     message(FATAL_ERROR "Require at least Raspberry Pi Pico SDK version 2.2.0")
 endif()
-pico_sdk_init()
 
 project(${PROJECT_NAME} C CXX ASM)
+pico_sdk_init()
 
 set(FREERTOS_PORT GCC_ARM_CM0 CACHE STRING "")
 set(FREERTOS_KERNEL_PATH "" CACHE PATH "Path to FreeRTOS Kernel (leave empty to fetch automatically)")
@@ -57,7 +57,6 @@ add_library(freertos_core STATIC
     ${FREERTOS_KERNEL_PATH}/stream_buffer.c
     ${FREERTOS_KERNEL_PATH}/tasks.c
     ${FREERTOS_KERNEL_PATH}/timers.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/pico_src/port.c
     ${HEAP_IMPL_FILE})
     
 target_link_libraries(freertos_core 
@@ -76,5 +75,7 @@ target_include_directories(freertos_core PUBLIC
     ${FREERTOS_KERNEL_PATH}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/pico_inc)
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/pico_src/port.c
+)
 target_link_libraries(${PROJECT_NAME} PRIVATE freertos_core)

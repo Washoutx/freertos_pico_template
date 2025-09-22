@@ -4,6 +4,8 @@
 #define configENABLE_MPU                        0
 #define configENABLE_TRUSTZONE                  0
 #define configRUN_FREERTOS_SECURE_ONLY          1
+#define configUSE_EVENT_GROUPS                  1
+#define configSUPPORT_PICO_SYNC_INTEROP         1
 
 /* Use Pico SDK ISR handlers */
 #define vPortSVCHandler         isr_svcall
@@ -79,7 +81,7 @@
 #define INCLUDE_xTaskGetIdleTaskHandle          0
 #define INCLUDE_eTaskGetState                   0
 #define INCLUDE_xEventGroupSetBitFromISR        1
-#define INCLUDE_xTimerPendFunctionCall          0
+#define INCLUDE_xTimerPendFunctionCall          1
 #define INCLUDE_xTaskAbortDelay                 0
 #define INCLUDE_xTaskGetHandle                  0
 #define INCLUDE_xTaskResumeFromISR              1
