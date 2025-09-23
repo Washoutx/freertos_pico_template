@@ -32,7 +32,6 @@
  *----------------------------------------------------------------------*/
 
 #include "FreeRTOS.h"
-#include "event_groups.h"
 #include "task.h"
 #include "rp2040_config.h"
 #include "hardware/clocks.h"
