@@ -63,8 +63,10 @@ target_link_libraries(freertos_core
     freertos_config
     pico_stdlib
     pico_base_headers
+    pico_stdio_uart
     hardware_clocks
     hardware_exception
+    hardware_adc
     pico_multicore)
 
 target_compile_definitions(freertos_core INTERFACE
